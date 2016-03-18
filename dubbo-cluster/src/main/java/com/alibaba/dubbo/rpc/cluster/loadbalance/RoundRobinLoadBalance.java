@@ -34,9 +34,15 @@ import com.alibaba.dubbo.rpc.Invoker;
  */
 public class RoundRobinLoadBalance extends AbstractLoadBalance {
 
+<<<<<<< 07d3b305766691e75bb4e00b51dc03540853f3d9
 	public static final String NAME = "roundrobin";
 
 	private final ConcurrentMap<String, AtomicPositiveInteger> sequences = new ConcurrentHashMap<String, AtomicPositiveInteger>();
+=======
+    public static final String NAME = "roundrobin";
+
+    private final ConcurrentMap<String, AtomicPositiveInteger> sequences = new ConcurrentHashMap<String, AtomicPositiveInteger>();
+>>>>>>> fix #215
 
 	private static final class IntegerWrapper {
 		public IntegerWrapper(int value) {
@@ -79,7 +85,11 @@ public class RoundRobinLoadBalance extends AbstractLoadBalance {
 			sequences.putIfAbsent(key, new AtomicPositiveInteger());
 			sequence = sequences.get(key);
 		}
+<<<<<<< 07d3b305766691e75bb4e00b51dc03540853f3d9
 		int currentSequence = sequence.getAndIncrement();
+=======
+        int currentSequence = sequence.getAndIncrement();
+>>>>>>> fix #215
 		if (maxWeight > 0 && minWeight < maxWeight) { // 权重不一样
 			int mod = currentSequence % weightSum;
 			for (int i = 0; i < maxWeight; i++) {
